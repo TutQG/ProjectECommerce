@@ -26,8 +26,7 @@ public class Category implements Serializable {
 	private byte[] photo;
 	private String description;
 
-	@OneToMany(mappedBy = "cat", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-	private List<Product> listProd;
+
 
 	// constructeurs
 	public Category() {
@@ -82,12 +81,6 @@ public class Category implements Serializable {
 		this.description = description;
 	}
 
-	public List<Product> getListProd() {
-		return listProd;
-	}
 
-	public void setListProd(List<Product> listProd) {
-		this.listProd = listProd;
-	}
 
 }

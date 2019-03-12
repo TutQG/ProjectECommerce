@@ -26,8 +26,7 @@ public class Adress implements Serializable {
 	private String city;
 	private String country;
 
-	@ManyToMany(mappedBy = "listAdress", cascade = CascadeType.PERSIST)
-	private List<Customer> listCusto;
+
 
 	public Adress() {
 		super();
@@ -100,13 +99,7 @@ public class Adress implements Serializable {
 		this.country = country;
 	}
 
-	public List<Customer> getListCusto() {
-		return listCusto;
-	}
 
-	public void setListCusto(List<Customer> listCusto) {
-		this.listCusto = listCusto;
-	}
 
 	@Override
 	public String toString() {

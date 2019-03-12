@@ -16,6 +16,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "orders")
@@ -26,14 +28,10 @@ public class Order implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idOrder")
 	private int id;
+	@Temporal(TemporalType.DATE)
 	private Date orderDate;
 
-	@OneToMany(mappedBy = "order", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-	private List<Customer> listCusto;
 
-	@ManyToMany
-	@JoinTable(name = "joinOrder", joinColumns = @JoinColumn(name = "idOrder"), inverseJoinColumns = @JoinColumn(name = "productId"))
-	private List<Product> listProd;
 
 	// constructeurs
 	public Order() {
@@ -68,20 +66,5 @@ public class Order implements Serializable {
 		this.orderDate = orderDate;
 	}
 
-	public List<Customer> getListCusto() {
-		return listCusto;
-	}
-
-	public void setListCusto(List<Customer> listCusto) {
-		this.listCusto = listCusto;
-	}
-
-	public List<Product> getListProd() {
-		return listProd;
-	}
-
-	public void setListProd(List<Product> listProd) {
-		this.listProd = listProd;
-	}
 
 }

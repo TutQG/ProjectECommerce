@@ -29,13 +29,6 @@ public class Customer implements Serializable {
 	private String mail;
 	private String phoneNumber;
 
-	@ManyToMany
-	@JoinTable(name = "adressJoin", joinColumns = @JoinColumn(name = "custoId"), inverseJoinColumns = @JoinColumn(name = "adressId"))
-	private List<Adress> listAdress;
-
-	@ManyToOne
-	@JoinColumn(name = "custoId", referencedColumnName = "idCusto")
-	private Order order;
 
 	// constructeur
 	public Customer() {
@@ -99,21 +92,6 @@ public class Customer implements Serializable {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public List<Adress> getListAdress() {
-		return listAdress;
-	}
-
-	public void setListAdress(List<Adress> listAdress) {
-		this.listAdress = listAdress;
-	}
-
-	public Order getOrder() {
-		return order;
-	}
-
-	public void setOrder(Order order) {
-		this.order = order;
-	}
 
 	@Override
 	public String toString() {
