@@ -5,6 +5,16 @@
 	<!-- Spécifier ka data source -->
 	<jta-data-source> java:/ProjectECommerce</jta-data-source>
 	
+	<!-- rendre les classes persistantes -->
+	<class>fr.adaming.entities.Administrator</class>
+	<class>fr.adaming.entities.Adress</class>
+	<class>fr.adaming.entities.Category</class>
+	<class>fr.adaming.entities.Customer</class>
+	<class>fr.adaming.entities.Order</class>
+	<class>fr.adaming.entities.OrderLine</class>
+	<class>fr.adaming.entities.Product</class>
+	
+	
 	
 	<properties>
 	<property name="hibernate.hbm2ddl.auto" value="update"/>

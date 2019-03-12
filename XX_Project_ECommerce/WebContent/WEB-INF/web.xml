@@ -20,8 +20,8 @@
 		<param-value>Development</param-value>
 	</context-param>
 
-<welcome-file-list>
-<welcome-file>login.xhtml</welcome-file>
-</welcome-file-list>
+	<welcome-file-list>
+		<welcome-file>login.xhtml</welcome-file>
+	</welcome-file-list>
 
 </web-app>
