@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -31,6 +32,10 @@ public class Customer implements Serializable {
 	@ManyToMany
 	@JoinTable(name = "adressJoin", joinColumns = @JoinColumn(name = "custoId"), inverseJoinColumns = @JoinColumn(name = "adressId"))
 	private List<Adress> listAdress;
+
+	@ManyToOne
+	@JoinColumn(name = "custoId", referencedColumnName = "idCusto")
+	private Order order;
 
 	// constructeur
 	public Customer() {
@@ -100,6 +105,14 @@ public class Customer implements Serializable {
 
 	public void setListAdress(List<Adress> listAdress) {
 		this.listAdress = listAdress;
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 
 	@Override

@@ -1,24 +1,26 @@
 package fr.adaming.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="products")
+@Table(name = "products")
 public class Product implements Serializable {
 
-	
-	//Déclaration des attributs
+	// Déclaration des attributs
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="idProduct")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idProduct")
 	private int id;
 	private String designation;
 	private String description;
@@ -26,8 +28,15 @@ public class Product implements Serializable {
 	private int quantity;
 	private boolean select;
 	private byte[] photo;
-	
-	//constructeurs
+
+	@ManyToMany(mappedBy = "listProd")
+	private List<Order> listOrder;
+
+	@ManyToOne
+	@JoinColumn(name = "productId", referencedColumnName = "idProduct")
+	private Category cat;
+
+	// constructeurs
 	public Product() {
 		super();
 	}
@@ -54,7 +63,7 @@ public class Product implements Serializable {
 		this.photo = photo;
 	}
 
-	//getter et setter
+	// getter et setter
 	public int getId() {
 		return id;
 	}
@@ -110,7 +119,21 @@ public class Product implements Serializable {
 	public void setPhoto(byte[] photo) {
 		this.photo = photo;
 	}
-	
-	
-	
+
+	public List<Order> getListOrder() {
+		return listOrder;
+	}
+
+	public void setListOrder(List<Order> listOrder) {
+		this.listOrder = listOrder;
+	}
+
+	public Category getCat() {
+		return cat;
+	}
+
+	public void setCat(Category cat) {
+		this.cat = cat;
+	}
+
 }

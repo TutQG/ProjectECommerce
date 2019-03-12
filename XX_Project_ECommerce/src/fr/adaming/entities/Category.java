@@ -1,27 +1,33 @@
 package fr.adaming.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="categories")
+@Table(name = "categories")
 public class Category implements Serializable {
 
 	// déclaration attributs
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="idCat")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idCat")
 	private int id;
 	private String name;
 	private byte[] photo;
 	private String description;
+
+	@OneToMany(mappedBy = "cat", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+	private List<Product> listProd;
 
 	// constructeurs
 	public Category() {
@@ -74,6 +80,14 @@ public class Category implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public List<Product> getListProd() {
+		return listProd;
+	}
+
+	public void setListProd(List<Product> listProd) {
+		this.listProd = listProd;
 	}
 
 }
