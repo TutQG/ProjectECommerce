@@ -14,6 +14,7 @@
 		<class>fr.adaming.entities.Customer</class>
 		<class>fr.adaming.entities.Order</class>
 		<class>fr.adaming.entities.OrderLine</class>
+		<class>fr.adaming.entities.Product</class>
 
 
 

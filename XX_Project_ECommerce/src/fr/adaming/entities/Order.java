@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -31,7 +32,12 @@ public class Order implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date orderDate;
 
+	@OneToMany(mappedBy = "order", cascade = CascadeType.REMOVE)
+	private List<OrderLine> listOL;
 
+	@ManyToOne
+	@JoinColumn(name="custoId", referencedColumnName="idCusto")
+	private Customer custo;
 
 	// constructeurs
 	public Order() {
@@ -66,5 +72,12 @@ public class Order implements Serializable {
 		this.orderDate = orderDate;
 	}
 
+	public List<OrderLine> getListOL() {
+		return listOL;
+	}
+
+	public void setListOL(List<OrderLine> listOL) {
+		this.listOL = listOL;
+	}
 
 }
