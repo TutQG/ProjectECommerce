@@ -28,7 +28,7 @@ public class Customer {
 	private String phoneNumber;
 
 	@ManyToMany
-	@JoinTable(name = "tabassos", joinColumns = @JoinColumn(name = "custoId"), inverseJoinColumns = @JoinColumn(name = "adressId"))
+	@JoinTable(name = "adressJoin", joinColumns = @JoinColumn(name = "custoId"), inverseJoinColumns = @JoinColumn(name = "adressId"))
 	private List<Adress> listAdress;
 
 	// constructeur
