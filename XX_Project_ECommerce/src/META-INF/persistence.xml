@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="PU_ECommerce" transaction-type="JTA">
-	
-	<!-- Spécifier ka data source -->
-	<jta-data-source> java:/ProjectECommerce</jta-data-source>
-	
-	<!-- rendre les classes persistantes -->
-	<class>fr.adaming.entities.Administrator</class>
-	<class>fr.adaming.entities.Adress</class>
-	<class>fr.adaming.entities.Category</class>
-	<class>fr.adaming.entities.Customer</class>
-	<class>fr.adaming.entities.Order</class>
-	<class>fr.adaming.entities.OrderLine</class>
-	<class>fr.adaming.entities.Product</class>
-	
-	
-	
-	<properties>
-	<property name="hibernate.hbm2ddl.auto" value="update"/>
-	<property name="hibernate.show_sql" value="true"/>
-	
-	</properties>
-	
-	
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="PU_ECommerce"
+		transaction-type="JTA">
+
+		<!-- Spécifier ka data source -->
+		<jta-data-source> java:/ProjectECommerce</jta-data-source>
+
+		<!-- rendre les classes persistantes -->
+		<class>fr.adaming.entities.Administrator</class>
+		<class>fr.adaming.entities.Adress</class>
+		<class>fr.adaming.entities.Category</class>
+		<class>fr.adaming.entities.Customer</class>
+		<class>fr.adaming.entities.Order</class>
+		<class>fr.adaming.entities.OrderLine</class>
+		<class>fr.adaming.entities.Product</class>
+
+
+
+		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+
+		</properties>
+
+
 	</persistence-unit>
 </persistence>
