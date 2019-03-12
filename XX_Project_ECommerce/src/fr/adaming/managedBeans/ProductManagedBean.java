@@ -1,5 +1,5 @@
 package fr.adaming.managedBeans;
 
-public class ProduitManageBean {
+public class ProductManagedBean {
 
 }
