@@ -1,13 +1,22 @@
 package fr.adaming.managedBeans;
 
+import java.util.List;
+
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import fr.adaming.entities.Administrator;
+import fr.adaming.entities.Category;
+import fr.adaming.entities.Product;
 import fr.adaming.service.IAdminService;
+import fr.adaming.service.ICategoryService;
+import fr.adaming.service.IProductService;
+import sun.nio.cs.ext.EUC_JP_Open;
 
 @ManagedBean(name = "adMB")
 @RequestScoped
@@ -17,12 +26,28 @@ public class AdminManagedBean {
 	// uml en java
 	@EJB
 	private IAdminService adService;
+	@EJB
+	private ICategoryService catService;
+	@EJB
+	private IProductService pdtService;
 
 	private Administrator admin;
+
+	private HttpSession mySession;
+
+	private Category cat;
+
+	private Product pdt;
 
 	// CONSTRUCTEUR VIDE
 	public AdminManagedBean() {
 		this.admin = new Administrator();
+	}
+
+	@PostConstruct // cette annotation sert a exucutela methode apres
+	// l'inst,ciation de l'objet
+	public void init() {
+		mySession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 	}
 
 	// getters & setters
@@ -49,4 +74,86 @@ public class AdminManagedBean {
 		}
 	}
 
+	public String addCat() {
+		Category catOut = catService.addCat(cat);
+
+		if (catOut.getId() != 0) {
+			List<Category> listCat = catService.getAllCat(cat);
+
+			mySession.setAttribute("lSession", listCat);
+
+			return "catDisplay";
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Category not created"));
+
+			return "addCat";
+		}
+	}
+
+	public String updateCat() {
+		int catUp = catService.updateCat(cat);
+		if (catUp != 0) {
+			List<Category> listCat = catService.getAllCat(cat);
+
+			mySession.setAttribute("lSession", listCat);
+			return "catDisplay";
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Update failed"));
+			return "updateCat";
+		}
+
+	}
+
+	public String delCat() {
+		int catDel = catService.updateCat(cat);
+
+		if (catDel != 0) {
+			List<Category> listCat = catService.getAllCat(cat);
+
+			mySession.setAttribute("lSession", listCat);
+			return "catDisplay";
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Delete failed"));
+			return "delCat";
+		}
+	}
+
+	public String addPdt() {
+		Product pdtOut = pdtService.addPdt(pdt);
+
+		if (pdtOut != null) {
+			List<Product> listPdt = pdtService.getAllPdt(pdt);
+			mySession.setAttribute("lSession", listPdt);
+			return "pdtDisplay";
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Category does not created"));
+			return "addPdt";
+		}
+	}
+
+	public String updatePdt() {
+		int pdtUp = pdtService.updatePdt(pdt);
+
+		if (pdtUp != 0) {
+			List<Product> listPdt = pdtService.getAllPdt(pdt);
+			mySession.setAttribute("lSession", listPdt);
+			return "pdtDisplay";
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Update failed"));
+			return "updatePdt";
+		}
+	}
+
+	public String delPdt() {
+		int pdtDel = pdtService.delPdt(pdt);
+
+		if (pdtDel != 0) {
+			List<Product> listPdt = pdtService.getAllPdt(pdt);
+			mySession.setAttribute("lSession", listPdt);
+			return "pdtDisplay";
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Delete failed"));
+			return "delPdt";
+		}
+	}
 }
