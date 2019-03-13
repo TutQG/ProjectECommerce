@@ -5,12 +5,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import fr.adaming.entities.Administrator;
 import fr.adaming.entities.Customer;
 
 @Stateless
 public class CustoDaoImpl implements ICustoDao {
-	
+
 	@PersistenceContext(unitName = "PU_ECommerce")
 	private EntityManager em;
 

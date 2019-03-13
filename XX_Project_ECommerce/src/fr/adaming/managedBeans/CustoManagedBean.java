@@ -25,19 +25,14 @@ public class CustoManagedBean {
 		this.custo = new Customer();
 	}
 
-
-
+	// getters & settars
 	public Customer getCusto() {
 		return custo;
 	}
 
-
-
 	public void setCusto(Customer custo) {
 		this.custo = custo;
 	}
-
-
 
 	// methode métier
 	public String connect() {
@@ -53,15 +48,15 @@ public class CustoManagedBean {
 			return "login";
 		}
 	}
-	
-	public String addCustomer(){
-		Customer verif=cuService.addCustom(custo);
-		if(verif != null){
-			
+
+	public String addCustomer() {
+		System.out.println("======================");
+		Customer verif = cuService.addCustomer(custo);
+		if (verif != null) {
+
 			return "homePage";
-			
-			
-		}else{
+
+		} else {
 			return "login";
 		}
 	}

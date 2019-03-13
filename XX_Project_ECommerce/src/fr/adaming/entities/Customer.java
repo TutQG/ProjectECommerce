@@ -32,7 +32,7 @@ public class Customer implements Serializable {
 	private String pwd;
 	private String phoneNumber;
 
-	@OneToMany(mappedBy="custo", cascade=CascadeType.REMOVE)
+	@OneToMany(mappedBy = "custo", cascade = CascadeType.REMOVE)
 	private List<Order> listOrder;
 
 	// constructeur
@@ -40,7 +40,7 @@ public class Customer implements Serializable {
 		super();
 	}
 
-	public Customer(int id, String name, String surname, String mail,String pwd, String phoneNumber) {
+	public Customer(int id, String name, String surname, String mail, String pwd, String phoneNumber) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -50,7 +50,7 @@ public class Customer implements Serializable {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Customer(String name, String surname, String mail,String pwd, String phoneNumber) {
+	public Customer(String name, String surname, String mail, String pwd, String phoneNumber) {
 		super();
 		this.name = name;
 		this.surname = surname;
@@ -98,9 +98,6 @@ public class Customer implements Serializable {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	
-	
-
 
 	public String getPwd() {
 		return pwd;
@@ -108,12 +105,6 @@ public class Customer implements Serializable {
 
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
-	}
-
-	@Override
-	public String toString() {
-		return "Customer [id=" + id + ", name=" + name + ", surname=" + surname + ", mail=" + mail + ", phoneNumber="
-				+ phoneNumber + "]";
 	}
 
 }

@@ -20,7 +20,7 @@ public class CustoServiceImpl implements ICustoService {
 	}
 
 	@Override
-	public Customer addCustom(Customer cuIn) {
+	public Customer addCustomer(Customer cuIn) {
 		
 		return cuDao.addCustomer(cuIn);
 	}
