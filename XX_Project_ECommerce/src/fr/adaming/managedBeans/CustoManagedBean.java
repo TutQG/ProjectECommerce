@@ -53,5 +53,17 @@ public class CustoManagedBean {
 			return "login";
 		}
 	}
+	
+	public String addCustomer(){
+		Customer verif=cuService.addCustom(custo);
+		if(verif != null){
+			
+			return "homePage";
+			
+			
+		}else{
+			return "login";
+		}
+	}
 
 }

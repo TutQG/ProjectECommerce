@@ -10,12 +10,21 @@ import fr.adaming.entities.Customer;
 public class CustoServiceImpl implements ICustoService {
 
 	// uml en java
-		@EJB
-		private ICustoDao cuDao;
+	@EJB
+	private ICustoDao cuDao;
+
 	@Override
 	public Customer isExist(Customer cuIn) {
-		
+
 		return cuDao.isExist(cuIn);
 	}
 
-}
+	@Override
+	public Customer addCustom(Customer cuIn) {
+		
+		return cuDao.addCustomer(cuIn);
+	}
+
+	
+	}
+

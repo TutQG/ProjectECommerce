@@ -32,4 +32,10 @@ public class CustoDaoImpl implements ICustoDao {
 
 		return null;
 	}
+
+	@Override
+	public Customer addCustomer(Customer cuIn) {
+		em.persist(cuIn);
+		return cuIn;
+	}
 }
