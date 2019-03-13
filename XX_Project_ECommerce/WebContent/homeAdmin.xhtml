@@ -1,14 +1,39 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<h:html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
-<head>
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
 <title>Administration Page</title>
-</head>
-<body>
+</h:head>
+<h:body>
+<ui:insert>
+		<ui:include src="/ressources/templates/navBarAdmin.xhtml"></ui:include>
+	</ui:insert>
+
+	<p:panel>
+	
+	<div style="margin-top: 150px" align="center">
+	<a href="catDisplay.xhtml">
+		<p:graphicImage value="ressources/images/folder-management.png" />
+		</a>
+		<a href="catPdt.xhtml">
+	<p:graphicImage value="ressources/images/shipping.png" />
+	</a>
+	</div>
+	
+	
+	
+	
+	
+	</p:panel>
 
 
-	<H1>Welcome to the Admin page</H1>
 
-</body>
-</html>
+
+
+
+
+
+</h:body>
+</h:html>
