@@ -1,5 +1,10 @@
 package fr.adaming.dao;
 
-public interface ICustoDao {
+import javax.ejb.Local;
 
+import fr.adaming.entities.Customer;
+
+@Local
+public interface ICustoDao {
+	public Customer isExist(Customer cuIn);
 }

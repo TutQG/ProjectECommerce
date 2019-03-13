@@ -16,6 +16,15 @@
 		<h:commandButton value="Se Connecter" action="#{adMB.connect}"></h:commandButton>
 
 	</h:form>
+	
+		<h:form>
+		Login : <h:inputText value="#{adMB.custo.mail}" />
+		<br />
+		Password : <h:inputSecret value="#{cuMB.custo.pwd}" />
+		<br />
+		<h:commandButton value="Se Connecter" action="#{cuMB.connect}"></h:commandButton>
+
+	</h:form>
 
 	<h1 style="color: red; text-align: center;">
 		<h:messages />

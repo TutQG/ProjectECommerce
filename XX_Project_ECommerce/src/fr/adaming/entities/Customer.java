@@ -29,6 +29,7 @@ public class Customer implements Serializable {
 	private String name;
 	private String surname;
 	private String mail;
+	private String pwd;
 	private String phoneNumber;
 
 	@OneToMany(mappedBy="custo", cascade=CascadeType.REMOVE)
@@ -39,20 +40,22 @@ public class Customer implements Serializable {
 		super();
 	}
 
-	public Customer(int id, String name, String surname, String mail, String phoneNumber) {
+	public Customer(int id, String name, String surname, String mail,String pwd, String phoneNumber) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.surname = surname;
 		this.mail = mail;
+		this.pwd = pwd;
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Customer(String name, String surname, String mail, String phoneNumber) {
+	public Customer(String name, String surname, String mail,String pwd, String phoneNumber) {
 		super();
 		this.name = name;
 		this.surname = surname;
 		this.mail = mail;
+		this.pwd = pwd;
 		this.phoneNumber = phoneNumber;
 	}
 
@@ -95,7 +98,17 @@ public class Customer implements Serializable {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+	
+	
 
+
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
 
 	@Override
 	public String toString() {

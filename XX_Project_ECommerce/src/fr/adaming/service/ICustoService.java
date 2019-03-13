@@ -1,5 +1,10 @@
 package fr.adaming.service;
 
-public interface ICustoService {
+import javax.ejb.Local;
 
+import fr.adaming.entities.Customer;
+
+@Local
+public interface ICustoService {
+	public Customer isExist(Customer cuIn);
 }
