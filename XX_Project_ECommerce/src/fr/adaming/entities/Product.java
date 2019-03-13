@@ -31,31 +31,36 @@ public class Product {
 	private byte[] picture;
 
 	@ManyToOne
-	@JoinColumn(name="catId", referencedColumnName="idCat")
+	@JoinColumn(name = "catId", referencedColumnName = "idCat")
 	private Category cat;
-	
-	@OneToMany(mappedBy="product", cascade=CascadeType.REMOVE)
+
+	@OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
 	private List<OrderLine> listOL;
-	
+
 	public Product() {
 		super();
 	}
 
-	public Product(String designation, String description, double price, int quantity) {
-		super();
-		this.designation = designation;
-		this.description = description;
-		this.price = price;
-		this.quantity = quantity;
-	}
-
-	public Product(int id, String designation, String description, double price, int quantity, byte[] picture) {
+	public Product(int id, String designation, String description, double price, int quantity, boolean selectionne,
+			byte[] picture) {
 		super();
 		this.id = id;
 		this.designation = designation;
 		this.description = description;
 		this.price = price;
 		this.quantity = quantity;
+		this.selectionne = selectionne;
+		this.picture = picture;
+	}
+
+	public Product(String designation, String description, double price, int quantity, boolean selectionne,
+			byte[] picture) {
+		super();
+		this.designation = designation;
+		this.description = description;
+		this.price = price;
+		this.quantity = quantity;
+		this.selectionne = selectionne;
 		this.picture = picture;
 	}
 
@@ -139,5 +144,4 @@ public class Product {
 		this.listOL = listOL;
 	}
 
-	
 }

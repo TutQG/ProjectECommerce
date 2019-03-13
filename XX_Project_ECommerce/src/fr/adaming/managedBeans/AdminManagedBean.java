@@ -42,6 +42,8 @@ public class AdminManagedBean {
 	// CONSTRUCTEUR VIDE
 	public AdminManagedBean() {
 		this.admin = new Administrator();
+		this.cat = new Category();
+		this.pdt = new Product();
 	}
 
 	@PostConstruct // cette annotation sert a exucutela methode apres
@@ -59,11 +61,33 @@ public class AdminManagedBean {
 		this.admin = admin;
 	}
 
+	public Category getCat() {
+		return cat;
+	}
+
+	public void setCat(Category cat) {
+		this.cat = cat;
+	}
+
+	public Product getPdt() {
+		return pdt;
+	}
+
+	public void setPdt(Product pdt) {
+		this.pdt = pdt;
+	}
+
 	// methode métier
 	public String connect() {
 		Administrator adOut = adService.isExist(admin);
 
 		if (adOut != null) {
+			// recup list
+			List<Category> listCat = catService.getAllCat(cat);
+			List<Product> listPdt = pdtService.getAllPdt(pdt);
+
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lCatSession", listCat);
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("lPdtSession", listPdt);
 			FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 
 			return "homeAdmin";
@@ -80,7 +104,7 @@ public class AdminManagedBean {
 		if (catOut.getId() != 0) {
 			List<Category> listCat = catService.getAllCat(cat);
 
-			mySession.setAttribute("lSession", listCat);
+			mySession.setAttribute("lCatSession", listCat);
 
 			return "catDisplay";
 		} else {
@@ -95,7 +119,7 @@ public class AdminManagedBean {
 		if (catUp != 0) {
 			List<Category> listCat = catService.getAllCat(cat);
 
-			mySession.setAttribute("lSession", listCat);
+			mySession.setAttribute("lCatSession", listCat);
 			return "catDisplay";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Update failed"));
@@ -105,12 +129,12 @@ public class AdminManagedBean {
 	}
 
 	public String delCat() {
-		int catDel = catService.updateCat(cat);
+		int catDel = catService.deleteCat(cat);
 
 		if (catDel != 0) {
 			List<Category> listCat = catService.getAllCat(cat);
 
-			mySession.setAttribute("lSession", listCat);
+			mySession.setAttribute("lCatSession", listCat);
 			return "catDisplay";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Delete failed"));
@@ -123,10 +147,10 @@ public class AdminManagedBean {
 
 		if (pdtOut != null) {
 			List<Product> listPdt = pdtService.getAllPdt(pdt);
-			mySession.setAttribute("lSession", listPdt);
+			mySession.setAttribute("lPdtSession", listPdt);
 			return "pdtDisplay";
 		} else {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Category does not created"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Product not created"));
 			return "addPdt";
 		}
 	}
@@ -136,7 +160,7 @@ public class AdminManagedBean {
 
 		if (pdtUp != 0) {
 			List<Product> listPdt = pdtService.getAllPdt(pdt);
-			mySession.setAttribute("lSession", listPdt);
+			mySession.setAttribute("lPdtSession", listPdt);
 			return "pdtDisplay";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Update failed"));
@@ -149,7 +173,7 @@ public class AdminManagedBean {
 
 		if (pdtDel != 0) {
 			List<Product> listPdt = pdtService.getAllPdt(pdt);
-			mySession.setAttribute("lSession", listPdt);
+			mySession.setAttribute("lPdtSession", listPdt);
 			return "pdtDisplay";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Delete failed"));
