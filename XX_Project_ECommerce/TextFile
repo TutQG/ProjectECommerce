@@ -1,0 +1,35 @@
+//DAO ETUDIANTIMPL
+
+
+@Override
+	public int updateEtudiant(Etudiant eIn) {
+		
+		String req="UPDATE Etudiant as e SET e.dn=:pDn, e.nom=:pNom, e.prenom=:pPrenom WHERE id=:pIde AND e.formateur.id=:pIdf";
+		
+		Query queryJPQL=em.createQuery(req);
+		
+		//passage des params
+		queryJPQL.setParameter("pDn", eIn.getDn());
+		queryJPQL.setParameter("pNom", eIn.getNom());
+		queryJPQL.setParameter("pPrenom", eIn.getPrenom());
+		queryJPQL.setParameter("pIde", eIn.getId());
+		queryJPQL.setParameter("pIdf", eIn.getFormateur().getId());
+		
+		return queryJPQL.executeUpdate();
+		
+	}
+
+	@Override
+	public int deleteEtudiant(Etudiant eIn) {
+		
+		String req="DELETE Etudiant as e WHERE id=:pIde";
+		
+		Query queryJPQL=em.createQuery(req);
+		
+		queryJPQL.setParameter("pIde", eIn.getId());
+		
+		return queryJPQL.executeUpdate();
+	}
+	
+	
+	

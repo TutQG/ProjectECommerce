@@ -16,7 +16,7 @@ public class CustoDaoImpl implements ICustoDao {
 
 	@Override
 	public Customer isExist(Customer cuIn) {
-		String req = "SELECT cu FROM Customer as cu WHERE ad.mail=:pMail AND ad.pwd=:pPwd";
+		String req = "SELECT cu FROM Customer as cu WHERE cu.mail=:pMail AND cu.pwd=:pPwd";
 		// recup un objet de type query
 		Query query = em.createQuery(req);
 
