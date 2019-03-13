@@ -9,23 +9,23 @@
 </h:head>
 <h:body>
 	<h:form>
-		<b:navBar fluid="true" inverse="true">
+		<b:navBar fluid="true" inverse="true" fixed="top" sticky="true">
 			<b:navbarLinks pull="left">
 
 				<h:graphicImage value="ressources/images/chopper (3).png"
 					href="homePage" />
 			</b:navbarLinks>
 			<b:navbarLinks>
-				<b:navLink value="Home Page" href="homePage.xhtml"></b:navLink>
+				<b:navLink value="Home Page" href="homePage.xhtml" iconAwesome="home"></b:navLink>
 
-				<b:dropMenu value="Categories" iconAwesome="birthday-cake">
+				<b:dropMenu value="Categories" iconAwesome="th-list">
 					<b:navLink value="Action" href="#"></b:navLink>
 					<b:navLink value="Another action" href="#"></b:navLink>
 					<b:navLink value="Something else here" href="#"></b:navLink>
 					<b:navLink></b:navLink>
 					<b:navLink header="Nav header"></b:navLink>
 					<b:navLink value="Separated link" href="#"></b:navLink>
-					<b:dropMenu value="Nested submenu" iconAwesome="birthday-cake"
+					<b:dropMenu value="Nested submenu"
 						iconAlign="right">
 						<b:navLink value="You can nest menus" href="#"></b:navLink>
 
@@ -36,11 +36,19 @@
 
 			<!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
 			<b:navbarLinks pull="right">
-				<b:navLink value="    " href="#"></b:navLink>
-			</b:navbarLinks>
-			<b:navbarLinks pull="right" styleClass="hidden-xs">
+				<b:navbarLinks>
+					<div style="margin-top: 15px" class="navbar-form navbar-left hidden-xs">
+						<h:inputText type="text" placeholder="Search" styleClass="navbar-left ui-xs-2" />
+					</div>
+					</b:navbarLinks>
+					<b:navbarLinks>
+					<div style="margin-top: 10px">
+						<button type="submit" class="btn btn-default navbar-form navbar-left hidden-xs">Submit</button>
+					</div>
+				</b:navbarLinks>
+
 				<b:navLink value="Log Out" href="login.xhtml"></b:navLink>
-				<b:dropMenu value="Panier">
+				<b:dropMenu value="Panier" iconAwesome="shopping-cart">
 					<b:navLink value="Action" href="#"></b:navLink>
 					<b:navLink value="Another action" href="#"></b:navLink>
 					<b:navLink value="Something else here" href="#"></b:navLink>
@@ -51,16 +59,6 @@
 				</b:dropMenu>
 			</b:navbarLinks>
 
-			<b:navbarLinks pull="right">
-				<div style="margin-top: 10px">
-					<button type="submit" class="btn btn-default">Submit</button>
-				</div>
-			</b:navbarLinks>
-			<b:navbarLinks pull="right">
-				<div style="margin-top: 10px">
-					<b:inputText type="text" class="form-control" placeholder="Search" />
-				</div>
-			</b:navbarLinks>
 		</b:navBar>
 	</h:form>
 </h:body>
