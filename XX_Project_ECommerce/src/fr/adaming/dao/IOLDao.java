@@ -13,4 +13,6 @@ public interface IOLDao {
 	public int updateOL(OrderLine ol);
 
 	public int deleteOL(OrderLine ol);
+	
+	
 }
