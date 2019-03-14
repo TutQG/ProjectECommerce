@@ -13,6 +13,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "products")
@@ -29,6 +30,9 @@ public class Product {
 	private boolean selectionne;
 	@Lob
 	private byte[] picture;
+	
+	@Transient
+	private String img;
 
 	@ManyToOne
 	@JoinColumn(name = "catId", referencedColumnName = "idCat")
@@ -142,6 +146,14 @@ public class Product {
 
 	public void setListOL(List<OrderLine> listOL) {
 		this.listOL = listOL;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
 	}
 
 }

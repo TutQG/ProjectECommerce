@@ -3,17 +3,16 @@ package fr.adaming.entities;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.ejb.Remove;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "categories")
@@ -31,6 +30,9 @@ public class Category implements Serializable {
 
 	@OneToMany(mappedBy="cat", cascade=CascadeType.REMOVE)
 	private List<Product> listProduct;
+	
+	@Transient
+	private String img;
 
 	// constructeurs
 	public Category() {
@@ -93,5 +95,14 @@ public class Category implements Serializable {
 		this.listProduct = listProduct;
 	}
 
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+	
 	
 }
