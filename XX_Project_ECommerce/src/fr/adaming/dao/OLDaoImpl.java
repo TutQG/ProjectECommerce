@@ -6,6 +6,7 @@ import fr.adaming.entities.OrderLine;
 
 public class OLDaoImpl implements IOLDao {
 
+	
 	@Override
 	public List<OrderLine> getAllOL(OrderLine ol) {
 		// TODO Auto-generated method stub
