@@ -10,13 +10,14 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
+import org.primefaces.model.UploadedFile;
+
 import fr.adaming.entities.Administrator;
 import fr.adaming.entities.Category;
 import fr.adaming.entities.Product;
 import fr.adaming.service.IAdminService;
 import fr.adaming.service.ICategoryService;
 import fr.adaming.service.IProductService;
-import sun.nio.cs.ext.EUC_JP_Open;
 
 @ManagedBean(name = "adMB")
 @RequestScoped
@@ -34,6 +35,10 @@ public class AdminManagedBean {
 	private Administrator admin;
 
 	private HttpSession mySession;
+	
+	private UploadedFile photo;
+	
+	private UploadedFile picture;
 
 	private Category cat;
 
@@ -77,6 +82,23 @@ public class AdminManagedBean {
 		this.pdt = pdt;
 	}
 
+	
+	public UploadedFile getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(UploadedFile photo) {
+		this.photo = photo;
+	}
+
+	public UploadedFile getPicture() {
+		return picture;
+	}
+
+	public void setPicture(UploadedFile picture) {
+		this.picture = picture;
+	}
+
 	// methode métier
 	public String connect() {
 		Administrator adOut = adService.isExist(admin);
@@ -99,8 +121,13 @@ public class AdminManagedBean {
 	}
 
 	public String addCat() {
-		Category catOut = catService.addCat(cat);
+		
 
+		if(this.photo!=null){
+			this.cat.setPhoto(this.photo.getContents());
+		}
+		Category catOut = catService.addCat(cat);
+		
 		if (catOut.getId() != 0) {
 			List<Category> listCat = catService.getAllCat(cat);
 
@@ -143,8 +170,13 @@ public class AdminManagedBean {
 	}
 
 	public String addPdt() {
-		Product pdtOut = pdtService.addPdt(pdt);
+		
 
+		if(this.picture!=null){
+			this.pdt.setPicture(this.picture.getContents());
+		}
+		Product pdtOut = pdtService.addPdt(pdt);
+		
 		if (pdtOut != null) {
 			List<Product> listPdt = pdtService.getAllPdt(pdt);
 			mySession.setAttribute("lPdtSession", listPdt);
