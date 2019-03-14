@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.apache.commons.codec.binary.Base64;
+
 import fr.adaming.entities.Category;
 
 @Stateless
@@ -23,7 +25,13 @@ public class CategoryDaoImpl implements ICategoryDao {
 		// recup query
 		Query query = em.createQuery(req);
 
-		return query.getResultList();
+		List<Category> listCat=query.getResultList();
+		
+		for(Category category:listCat){
+			category.setImg("data:image/png;base64,"+Base64.encodeBase64String(category.getPhoto()));
+		}
+
+		return listCat;
 	}
 
 	@Override
