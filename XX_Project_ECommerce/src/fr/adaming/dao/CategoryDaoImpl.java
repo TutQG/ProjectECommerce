@@ -34,12 +34,12 @@ public class CategoryDaoImpl implements ICategoryDao {
 
 	@Override
 	public int updateCat(Category cat) {
-		String req = "UPDATE Category as cat SET cat.name:=pName, cat.photo:=pPhoto, cat.description:=pDescription WHERE cat.id:=pIdCat ";
+		String req = "UPDATE Category as cat SET cat.name=:pName, cat.photo=:pPhoto, cat.description=:pDescription WHERE cat.id=:pIdCat ";
 		Query query = em.createQuery(req);
 
 		// passage des params
 		query.setParameter("pName", cat.getName());
-		// query.setParameter("pPhoto", cat.getPhoto());
+		query.setParameter("pPhoto", cat.getPhoto());
 		query.setParameter("pDescription", cat.getDescription());
 		query.setParameter("pIdCat", cat.getId());
 
@@ -48,7 +48,7 @@ public class CategoryDaoImpl implements ICategoryDao {
 
 	@Override
 	public int deleteCat(Category cat) {
-		String req = "DELETE Category as cat WHERE cat.id:=pIdCat";
+		String req = "DELETE Category as cat WHERE cat.id=:pIdCat";
 
 		Query query = em.createQuery(req);
 

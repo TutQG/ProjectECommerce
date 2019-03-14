@@ -34,8 +34,8 @@ public class ProductDaoImpl implements IProductDao {
 
 	@Override
 	public int updatePdt(Product pdt) {
-		String req = "UPDATE Product as pdt SET pdt.designation:=pDesign, pdt.description:=pDescr, pdt.price:=pPrice,"
-				+ " pdt.quantity:=pQuantity, pdt.picture:=pPicture WHERE id:=pIdPdt";
+		String req = "UPDATE Product as pdt SET pdt.designation=:pDesign, pdt.description=:pDescr, pdt.price=:pPrice,"
+				+ " pdt.quantity=:pQuantity, pdt.picture=:pPicture WHERE id=:pIdPdt";
 		Query query = em.createQuery(req);
 
 		query.setParameter("pDesign", pdt.getDesignation());
@@ -50,7 +50,7 @@ public class ProductDaoImpl implements IProductDao {
 
 	@Override
 	public int delPdt(Product pdt) {
-		String req = "DELETE Product as pdt WHERE id:=pIdPdt";
+		String req = "DELETE Product as pdt WHERE id=:pIdPdt";
 
 		Query query = em.createQuery(req);
 
