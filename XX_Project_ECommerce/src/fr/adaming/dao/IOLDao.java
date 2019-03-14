@@ -2,9 +2,15 @@ package fr.adaming.dao;
 
 import java.util.List;
 
-import fr.adaming.entities.OrderLine;
+import javax.ejb.Local;
 
+import fr.adaming.entities.OrderLine;
+import fr.adaming.entities.Product;
+
+@Local
 public interface IOLDao {
+
+	public double price(OrderLine ol, Product pdt);
 
 	public List<OrderLine> getAllOL(OrderLine ol);
 
@@ -13,6 +19,5 @@ public interface IOLDao {
 	public int updateOL(OrderLine ol);
 
 	public int deleteOL(OrderLine ol);
-	
-	
+
 }
